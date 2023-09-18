@@ -1,0 +1,24 @@
+services:
+  webapi:
+    build:
+      context: WebApi
+    ports:
+      - 0.0.0.0:0:80
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - .:/root
+    networks:
+      - demogameserver
+
+  gameserver:
+    build:
+      context: Server
+    ports:
+      - 0.0.0.0:0:7777
+      - 0.0.0.0:0:7778
+    networks:
+      - demogameserver
+      
+networks:
+  demogameserver:
+    driver: bridge
