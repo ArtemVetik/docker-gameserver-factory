@@ -7,9 +7,20 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - .:/root
+    depends_on:
+      - sqlserver
     networks:
       - demogameserver
-
+  sqlserver:
+    container_name: sql-server
+    image: mcr.microsoft.com/mssql/server:2017-latest
+    ports:
+      - 0:1433
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=MiH)|sn@9s>zAYs9
+    networks:
+      - demogameserver
   gameserver:
     build:
       context: Server
