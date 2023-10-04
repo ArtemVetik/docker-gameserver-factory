@@ -1,5 +1,6 @@
 services:
   webapi:
+    image: ${PROJECT_NAME}/webapi
     build:
       context: WebApi
     ports:
@@ -10,9 +11,8 @@ services:
     depends_on:
       - sqlserver
     networks:
-      - demogameserver
+      - servernetwork
   sqlserver:
-    container_name: sql-server
     image: mcr.microsoft.com/mssql/server:2017-latest
     ports:
       - 0:1433
@@ -20,16 +20,18 @@ services:
       - ACCEPT_EULA=Y
       - MSSQL_SA_PASSWORD=MiH)|sn@9s>zAYs9
     networks:
-      - demogameserver
+      - servernetwork
   gameserver:
+    image: ${PROJECT_NAME}/gameserver
     build:
       context: Server
     ports:
       - 0.0.0.0:0:7777
       - 0.0.0.0:0:7778
     networks:
-      - demogameserver
+      - servernetwork
       
 networks:
-  demogameserver:
-    driver: bridge
+    servernetwork:
+        name: ${NETWORK}
+        driver: bridge
