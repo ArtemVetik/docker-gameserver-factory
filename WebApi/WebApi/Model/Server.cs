@@ -8,9 +8,6 @@ namespace WebApi.Model
         public string JoinCode { get; set; }
 
         [Required]
-        public string IpAddress { get; set; }
-
-        [Required]
         public string Port7777 { get; set; }
 
         [Required]
