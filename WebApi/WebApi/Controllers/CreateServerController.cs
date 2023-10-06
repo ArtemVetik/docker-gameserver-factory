@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Filters;
+using System.Net.Sockets;
 using System.Net;
 using System.Text.RegularExpressions;
 using WebApi.DataBase;
@@ -36,7 +36,6 @@ namespace WebApi.Controllers
             _dbContext.Servers.Add(new Server()
             {
                 JoinCode = joinCode,
-                IpAddress = "localhost",
                 Port7777 = port7777,
                 Port7778 = port7778,
                 ContainerId = containerId,
