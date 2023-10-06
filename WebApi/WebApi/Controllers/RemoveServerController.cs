@@ -6,7 +6,7 @@ namespace WebApi.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    [RestrictToLocalhost]
+    [RestrictToPrivateAddressSpace]
     public class RemoveServerController : ControllerBase
     {
         private readonly GameServersDbContext _dbContext;
