@@ -10,7 +10,14 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<GameServersDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+builder.Services.AddCors();
+
 var app = builder.Build();
+
+app.UseCors(policy => policy.AllowAnyMethod()
+                            .AllowAnyHeader()
+                            .SetIsOriginAllowed(origin => true)
+                            .AllowCredentials());
 
 if (app.Environment.IsDevelopment())
 {
