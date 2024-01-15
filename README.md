@@ -31,3 +31,6 @@ This method can be called by your created server, for example, when all players 
 
 ### Build from Source
 In Unity, go to Build Settings, change the platform to Dedicated Server (Linux) and build. The server build should be in the `Server/build` folder and named `serverbuild.x86_64`.
+
+### Usage for Mirror
+[This](https://github.com/ArtemVetik/com.agava.mirrorserverapi) package contains a custom NetworkManager that automatically removes a server when needed, and a C# API for creating and connecting to servers.
